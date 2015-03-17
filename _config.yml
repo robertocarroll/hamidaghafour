@@ -1,0 +1,28 @@
+# Dependencies
+markdown:            redcarpet
+highlighter:         pygments
+
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           /:categories/:title 
+relative_permalinks: true
+
+# Setup
+title:               Hamida Ghafour
+tagline:             Hamida Ghafour
+url:                 http://hamidaghafour.com
+baseurl:             /
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _scss
+  style:            :compressed
+
+
+# Custom vars
+version:             1.0.0
+github:
+  repo:              https://github.com/robertocarroll/hamidaghafour
