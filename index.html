@@ -20,7 +20,7 @@ modified-date: 2015-03-05
       {% for post in site.posts limit:5 %}
 				{% if post.featured %}
 					<article class="media">
-						<a href="{{site.baseurl }}/{{ post.url }}">
+						<a href="{{site.baseurl }}{{ post.url }}">
 			       <img src=http://placekitten.com/g/200/150 alt="" class=media__img>
 			       <div class="media__body">
 			       <h1 class="article-list-title">{{ post.title }} </h3> 
