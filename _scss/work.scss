@@ -29,6 +29,10 @@
 // Work single 
 
 .work-main-title {
+	text-align: center;
+	padding-top: $inuit-base-spacing-unit--large;
+	@include inuit-font-size($inuit-heading-size-1, 1.1);
+
 	@include breakpoint(small) { 
 		@include gs-span(m, 2); 
 	}
@@ -40,8 +44,7 @@
 	@include breakpoint(large) { 
 		@include gs-span(d, 3, 7); 
 	}
-	text-align: center;
-	padding-top: $inuit-base-spacing-unit--large;
+
 }
 
 .work-main-excerpt {

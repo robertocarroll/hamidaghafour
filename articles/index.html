@@ -6,7 +6,7 @@ categories:
 ---
 	
 	<div class="content-list">		
-		<h1 class="alpha">Articles</h1>
+		<h1 class="alpha centre padding-above">Articles</h1>
 
 		{% for post in site.categories.articles %}
 			{% for country in post.countries %}
@@ -20,7 +20,7 @@ categories:
 
 			{% assign myArray = {{result}} | split: "|" | sort | %}
 
-			<ul id="filter">
+			<ul id="filter" class="nav centre">
 
 				<li class="all"><a href="#">All</a>
 

@@ -12,7 +12,7 @@ relative_permalinks: true
 title:               Hamida Ghafour
 tagline:             Hamida Ghafour
 url:                 http://robertocarroll.com/hamidaghafour/
-baseurl:             http://robertocarroll.com/hamidaghafour/
+baseurl:             /hamidaghafour
 
 # Assets
 #

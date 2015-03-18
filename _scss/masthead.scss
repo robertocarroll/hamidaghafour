@@ -6,18 +6,50 @@
   top: 0;
   width: 100%;
   z-index: 5;
+
+  @include breakpoint(small) { 
+		text-align: center;
+	}
 }
 
 .main-nav-logo {
-	float: left;
-	position: relative;
-	z-index: 2;
+
+	@include breakpoint(small) { 
+		float: none;
+	}
+
+	@include breakpoint(medium) { 
+		float: left;
+		position: relative;
+		z-index: 2;
+	}
+
+	@include breakpoint(large) { 
+		float: left;
+		position: relative;
+		z-index: 2;
+	}
 }
 
 .main-nav-menu {
-    float: right;
+
+ @include breakpoint(small) { 
+		float: none;
+	}
+
+	@include breakpoint(medium) { 
+		 float: right;
     position: relative;
     z-index: 1;
+		
+	}
+
+	@include breakpoint(large) { 
+		 float: right;
+    position: relative;
+    z-index: 1;
+		
+	}
 }
 
 .nav {
@@ -27,7 +59,7 @@
 
     > li{
     	list-style: none;
-    	padding-left: inuit-base-spacing-unit;
+    	padding-right: $inuit-base-spacing-unit--smallest;
 
         &,
         > a{
