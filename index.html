@@ -33,4 +33,15 @@ modified-date: 2015-03-05
 			 <h3><strong><a href="{{site.baseurl }}/articles">View all stories</a></strong></h3>
 		</div>
 
+<script>
+	$( document ).ready(function() {
+		 	var height = window.innerHeight;
+			$(".hero").css({"height": height});
 
+			jQuery(window).resize(function() {
+				height = window.innerHeight;
+				$(".hero").css({"height": height});
+			}); 
+	});
+
+</script>
