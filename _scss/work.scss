@@ -7,7 +7,6 @@
 .work-article {
 	padding-top: $inuit-base-spacing-unit;
 	padding-bottom: $inuit-base-spacing-unit;
-	border-top: 1px solid $inuit-base-grey-color-4;
 }
 
 .work-title {
@@ -21,6 +20,10 @@
 	margin: 0;
 	color: $inuit-base-grey-color-2;
 	@include inuit-font-size($inuit-heading-size-3);
+}
+
+.work-article-date {
+	text-transform: uppercase;
 }
 
 // Work single 

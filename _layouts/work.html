@@ -17,10 +17,10 @@ layout: wide
   <h2 class="meta-header">Year</h2>
   {{ page.date | date: '%Y' }}
   
-  <h2 class="meta-header">Services</h2>
+  <h2 class="meta-header">Country</h2>
   <ul class="services">
-    {% for services in page.services %}
-      <li>{{ services }}</li>
+    {% for country in page.countries %}
+      <li>{{ country }}</li>
     {% endfor %}
   </ul>
 </aside>
@@ -37,11 +37,11 @@ layout: wide
     {% if post.title == page.title %}
         {% unless forloop.last %}
             {% assign next = catg_posts[forloop.index] %}
-            <a href="{{ site.baseurl }}{{ next.url }}" class="previous-link" title="Previous Project">↫ previous</a>
+            <a href="{{ site.baseurl }}{{ next.url }}" class="previous-link" title="Previous Project">← previous</a>
 
         {% endunless %}
         {% unless forloop.first %}
-            <a href="{{ site.baseurl }}{{ prev.url }}" class="next-link" title="Next Project">next ↬</a>
+            <a href="{{ site.baseurl }}{{ prev.url }}" class="next-link" title="Next Project">next →</a>
          {% endunless %}
     {% endif %}
     {% assign prev = post %}

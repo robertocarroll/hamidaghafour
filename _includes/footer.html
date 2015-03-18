@@ -1,11 +1,10 @@
  <footer class="footer">
 
-	  <div class="copyright">© {{ site.time | date: '%Y' }} <a href="mailto:{{ data.details.email }}">{{ site.title }}</a>. All rights reserved.</div>
-		  <ul>
+	  <div class="copyright">© {{ site.time | date: '%Y' }} <a href="mailto:{{ site.data.details.email }}">{{ site.title }}</a></div>
+		  <ul class="nav">
 		  	<li><a rel="me" href="https://twitter.com/{{ data.details.twitter }}">Twitter</a></li>
 		  	<li><a rel="me" href="https://facebook.com/{{ data.details.facebook }}">Facebook</a></li>
 		    <li><a href="{{ site.baseurl }}/atom.xml">RSS</a></li>
 		  </ul>
 
- </footer>
-    
+ </footer>    

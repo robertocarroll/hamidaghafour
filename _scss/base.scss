@@ -8,12 +8,12 @@ $inuit-base-line-height: 32px !default;
 //palette
 $textPrimaryColor: #212121;
 $backgroundColor: #fff;
-$linkColor: #607D8B;
-$hoverColor: #f2dc00;
-$lightPrimaryColor: #CFD8DC;
+$linkColor: #616161;
+$hoverColor: #536DFE;
+$lightPrimaryColor: #9E9E9E;
 $inuit-base-grey-color-2: #727272;
 $inuit-base-grey-color-3: #F0EDE7;
-$inuit-base-grey-color-4: #B6B6B6;
+$inuit-base-grey-color-4: #d6d3d3;
 
 
 $inuit-base-spacing-unit: $inuit-base-line-height;
@@ -31,6 +31,14 @@ $inuit-heading-size-3:  24px !default;
 $inuit-heading-size-4:  21px !default;
 $inuit-heading-size-5:  18px !default;
 $inuit-heading-size-6:  16px !default;
+
+.cf{
+	&:after{
+			content:"";
+			display:table;
+			clear:both;
+		}
+}
 
 * {
   -webkit-box-sizing: border-box;

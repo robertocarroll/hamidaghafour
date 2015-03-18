@@ -1,0 +1,115 @@
+---
+layout: default
+title: Articles
+categories:
+- articles
+---
+	
+	<div class="content-list">		
+		<h1 class="alpha">Articles</h1>
+
+		{% for post in site.categories.articles %}
+			{% for country in post.countries %}
+				{% unless result contains country %}
+			     {% capture result %}{{ result }}|{{ country }}{% endcapture %} 
+			  {% endunless %}      
+	    {% endfor %}			
+	  {% endfor %}
+		
+
+
+			{% assign myArray = {{result}} | split: "|" | sort | %}
+
+			<ul id="filter">
+
+				<li class="all"><a href="#">All</a>
+
+			{% for thecountry in myArray %}
+
+					<li><a href="#{{thecountry | downcase | replace: ' ', '-'}}">{{thecountry}}</a></li>
+
+			{% endfor %}
+
+		</ul>
+
+	<div id="list">
+
+		{% for post in site.categories.articles  %}
+
+			<article class="work-article {% for country in post.countries %}{{country | downcase | replace: ' ', '-'}} {% endfor %}">
+				<time class="work-article-date" datetime="{{ post.date | date_to_xmlschema }}" class="page-date">{{ post.date | date: "%B %Y" }}</time>
+		    <h1 class="work-title"><a href="{{ post.url }}">{{ post.title }}</a></h1> 
+		     <p class="work-excerpt">{{ post.excerpt }}</p> 
+
+		    </article>
+
+		{% endfor %}
+
+	</div>		
+
+</div>
+
+<script>
+
+//http://stackoverflow.com/questions/25975247/filter-unsorted-list-using-url-value-on-page-load?rq=1
+var url = window.location.href;
+var anchor = url.substring(url.indexOf("#"));
+var tag;
+
+if (anchor.indexOf('#') > -1) {
+    tag = anchor.substring(1);
+}
+
+if (tag) {
+    if (tag == 'all') {
+        $('#list article.hidden').show();
+    } else {
+        
+        $('#list article').each(function () {
+            if (!$(this).hasClass(tag)) {
+                $(this).hide().addClass('hidden');
+            } else {
+                $(this).show().removeClass('hidden');
+            }
+        });
+    }
+} else {
+ $('#list article').show();   
+}
+
+
+$('#filter a').click(function () {
+
+    $('#filter .current').removeClass('current');
+    $(this).parent().addClass('current');
+
+   var filterVal = $(this).text().toLowerCase().replace(' ', '-');
+ 
+   if (filterVal == 'all') {
+        $('#list article.hidden').fadeIn('slow').removeClass('hidden');
+    } else {
+
+        $('#list article').each(function () {
+            if (!$(this).hasClass(filterVal)) {
+                $(this).fadeOut('fast').addClass('hidden');
+            } else {
+                $(this).fadeIn('slow').removeClass('hidden');
+            }
+        });
+    }
+
+    return false;
+});
+
+</script>
+
+<style>
+.hidden {
+	display: none;
+}
+
+</style>
+
+
+
+

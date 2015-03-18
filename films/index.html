@@ -1,0 +1,25 @@
+---
+layout: default
+title: Films
+categories:
+- films
+---
+	
+	<div class="content-list">		
+		<h1 class="alpha">Films</h1>
+
+	{% for post in site.categories.films %}
+
+		<article class="work-article">
+			<time class="work-article-date" datetime="{{ post.date | date_to_xmlschema }}" class="page-date">{{ post.date | date: "%B %Y" }}</time>
+	    <h1 class="work-title"><a href="{{ post.url }}">{{ post.title }}</a></h1> 
+	     <p class="work-excerpt">{{ post.excerpt }}</p>       
+	    </article>
+	   
+	{% endfor %}
+
+	</div>
+
+
+
+

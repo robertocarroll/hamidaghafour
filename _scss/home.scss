@@ -1,7 +1,5 @@
 // Home
 
-
-
 .hero {
   background:
     linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
@@ -23,4 +21,97 @@
 
 .down-arrow img {
 	display: inline;
+}
+
+.main-work {
+	padding-top: $inuit-base-spacing-unit;
+	padding-bottom: $inuit-base-spacing-unit;
+
+	@include breakpoint(small) { 
+		@include gs-span(m, 2); 
+	}
+
+	@include breakpoint(medium) { 
+		@include gs-span(t, 2, 6); 
+	}
+
+	@include breakpoint(large) { 
+		@include gs-span(d, 3, 7); 
+	}
+	
+}
+
+.media{
+    display:block;
+    @extend .cf;
+}
+
+.article-list-title {
+
+	margin-top: 0;
+	margin-bottom: $inuit-base-spacing-unit--smallest; 
+	
+	@include breakpoint(small) { 
+    @include inuit-font-size($inuit-heading-size-3, 1.1);
+    margin-bottom: 4px;
+	}
+
+	@include breakpoint(medium) { 
+		@include inuit-font-size($inuit-heading-size-2, 1.3);		
+	}
+
+	@include breakpoint(large) { 
+		@include inuit-font-size($inuit-heading-size-2, 1.3);
+	}
+}
+
+.article-list-excerpt {
+
+	font-style: italic;
+	color:$textPrimaryColor;
+	
+	@include breakpoint(small) { 
+    @include inuit-font-size($inuit-heading-size-6, 1.3);
+	}
+
+	@include breakpoint(medium) { 
+		@include inuit-font-size($inuit-heading-size-4);		
+	}
+
+	@include breakpoint(large) { 
+		@include inuit-font-size($inuit-heading-size-4);
+	}
+}
+
+.media__img{
+    float:left;
+    margin-right:$inuit-base-spacing-unit;
+
+    @include breakpoint(small) { 
+    	width: 25%;
+			margin-right: $inuit-base-spacing-unit--smallest;
+		}
+
+		@include breakpoint(medium) { 
+			width: 33%;
+			margin-right: $inuit-base-spacing-unit;	
+		}
+
+		@include breakpoint(large) { 
+			width: 33%;
+			margin-right: $inuit-base-spacing-unit;	
+		}
+}
+  
+.media__img img {
+    display:block;
+}
+
+.media__body{
+    overflow:hidden;
+}
+
+.media__body,
+.media__body > :last-child{
+    margin-bottom:0;
 }

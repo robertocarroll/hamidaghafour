@@ -3,6 +3,7 @@ layout: wide
 title: Home
 modified-date: 2015-03-05
 ---
+<!-- https://css-tricks.com/design-considerations-text-images/ -->
 
 <div class="hero">
 	<div class="hero-inner">
@@ -14,10 +15,22 @@ modified-date: 2015-03-05
   </div>
 </div>
     
-    <div class="content-test" id="main-work">
-      <p>This pen shows a method to produce window-height content without the <code>vh</code> units.</p>
-      <p>By setting both <code>html</code> and <code>body</code> to <code>100%</code> you can then set any individual containers to 100% height as well, thus making it take up the full browser height.</p>
-      <p>It also shows the box-shadow inline padding technique that I'm very fond of.</p>
+    <div class="main-work" id="main-work">
+      <h2><strong>Featured stories</strong></h2>
+      {% for post in site.posts limit:5 %}
+				{% if post.featured %}
+					<article class="media">
+						<a href="{{ post.url }}">
+			       <img src=http://placekitten.com/g/200/150 alt="" class=media__img>
+			       <div class="media__body">
+			       <h1 class="article-list-title">{{ post.title }} </h3> 
+             <p class="article-list-excerpt">{{ post.excerpt }}</p> 
+            </a> 
+			   </article>		    	
+			  {% endif %}
+			{% endfor %}
+
+			 <h3><strong><a href="/articles">View all stories</a></strong></h3>
 		</div>
 
 
