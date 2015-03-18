@@ -20,7 +20,7 @@ modified-date: 2015-03-05
       {% for post in site.posts limit:5 %}
 				{% if post.featured %}
 					<article class="media">
-						<a href="{{ post.url }}">
+						<a href="{{baseurl}}{{ post.url }}">
 			       <img src=http://placekitten.com/g/200/150 alt="" class=media__img>
 			       <div class="media__body">
 			       <h1 class="article-list-title">{{ post.title }} </h3> 
@@ -30,7 +30,7 @@ modified-date: 2015-03-05
 			  {% endif %}
 			{% endfor %}
 
-			 <h3><strong><a href="/articles">View all stories</a></strong></h3>
+			 <h3><strong><a href="{{baseurl}}/articles">View all stories</a></strong></h3>
 		</div>
 
 
