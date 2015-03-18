@@ -11,8 +11,8 @@ relative_permalinks: true
 # Setup
 title:               Hamida Ghafour
 tagline:             Hamida Ghafour
-url:                 http://hamidaghafour.com
-baseurl:             /
+url:                 http://robertocarroll.com/hamidaghafour/
+baseurl:             http://robertocarroll.com/hamidaghafour/
 
 # Assets
 #
