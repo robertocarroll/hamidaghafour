@@ -32,19 +32,6 @@ $inuit-heading-size-4:  21px !default;
 $inuit-heading-size-5:  18px !default;
 $inuit-heading-size-6:  16px !default;
 
-.cf{
-	&:after{
-			content:"";
-			display:table;
-			clear:both;
-		}
-}
-
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
 
 html,
 body {
@@ -54,6 +41,8 @@ body {
 
 html {
   font-family: $inuit-body-font;
+  box-sizing: border-box;
+
 
   @include breakpoint(small) { 
 		font-size: 1.1em;
@@ -70,6 +59,10 @@ html {
   	 line-height: 1.52381em; 
 	}
 }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 
 // ratio: 1.1609981
 body {
@@ -77,6 +70,18 @@ body {
   background-color: $backgroundColor;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+}
+
+
+.cf {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
 // Images
