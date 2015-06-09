@@ -16,8 +16,6 @@ categories:
 	    {% endfor %}			
 	  {% endfor %}
 		
-
-
 			{% assign myArray = {{result}} | split: "|" | sort | %}
 
 			<ul id="filter" class="nav centre">
@@ -26,7 +24,7 @@ categories:
 
 			{% for thecountry in myArray %}
 
-					<li><a href="#{{thecountry | downcase | replace: ' ', '-'}}">{{thecountry}}</a></li>
+					<li id="nav-country-{{thecountry | downcase | replace: ' ', '-'}}"><a href="#{{thecountry | downcase | replace: ' ', '-'}}">{{thecountry}}</a></li>
 
 			{% endfor %}
 
@@ -50,62 +48,81 @@ categories:
 </div>
 
 <script>
+var currentHashNav = null;
 
-//http://stackoverflow.com/questions/25975247/filter-unsorted-list-using-url-value-on-page-load?rq=1
-var url = window.location.href;
-var anchor = url.substring(url.indexOf("#"));
-var tag;
+//Call this, passing it a callback function
+function initHashNav(callback) {			
+	if (!callback) return false;
 
-if (anchor.indexOf('#') > -1) {
-    tag = anchor.substring(1);
+	if (typeof callback !== "function") {
+		throw "Sorry, that url does not exist. Please try again.";
+		return false;
+	}
+
+	if ("onhashchange" in window) {
+	    window.onhashchange = function(){checkHash(callback);};
+	} else {
+	    setInterval(function(){checkHash(callback);}, 100);        
+	}
+
+	checkHash(callback);
 }
 
-if (tag) {
-    if (tag == 'all') {
-        $('#list article.hidden').show();
-    } else {
-        
-        $('#list article').each(function () {
-            if (!$(this).hasClass(tag)) {
-                $(this).hide().addClass('hidden');
-            } else {
-                $(this).show().removeClass('hidden');
-            }
-        });
-    }
-} else {
- $('#list article').show();   
+//Function called onhashchange or on loop (for older browsers)
+function checkHash(callback) {	
+	if (window.location.hash.replace(/^#/i,"") !== currentHashNav) {
+		var newHash = window.location.hash.replace(/^#/i,"");		
+
+		var chopped = chopHash(newHash);			
+		callback(chopped);
+
+		currentHashNav = newHash;
+	}
 }
 
+function chopHash(hash) {	
+	//Do something with the new hash
+	var hash = {
+		raw: hash,
+		base: decodeURIComponent(hash),
+		parameters: null
+	}
 
-$('#filter a').click(function () {
+	return hash;
+}
 
-    $('#filter .current').removeClass('current');
-    $(this).parent().addClass('current');
+function updateNav(hash) {  
+	var hashValue = hash.raw; 
+	$('#filter .current').removeClass('current');
+	var navValue = document.getElementById('nav-country-' + hashValue);
+	navValue.setAttribute("class", "current");
+	console.log (hashValue);
 
-   var filterVal = $(this).text().toLowerCase().replace(' ', '-');
- 
-   if (filterVal == 'all') {
+	if (!hashValue || 0 === hashValue.length) {
         $('#list article.hidden').fadeIn('slow').removeClass('hidden');
     } else {
+			    	$('#list article').each(function () {
+			      if (!$(this).hasClass(hashValue)) {
+			          $(this).fadeOut('fast').addClass('hidden');
+			      } else {
+			          $(this).fadeIn('slow').removeClass('hidden');
+			      }
+			  });
+		}		    	
+}
 
-        $('#list article').each(function () {
-            if (!$(this).hasClass(filterVal)) {
-                $(this).fadeOut('fast').addClass('hidden');
-            } else {
-                $(this).fadeIn('slow').removeClass('hidden');
-            }
-        });
-    }
+initHashNav(updateNav);
 
-    return false;
-});
 
 </script>
 
 <style>
 .hidden {
 	display: none;
+}
+
+.current {
+	border-bottom: 3px solid #00f;
 }
 
 </style>
